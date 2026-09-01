@@ -39,7 +39,7 @@ public class PaymentController
         User user = userService.getUser(myUser.getUserPk()) ;
         long paymentId = Long.parseLong(data.getCustomData());
         Order order = orderService.getOrderByOrderPk(paymentId) ;
-        if (order.getOrderUser() != user) return ; // 실패시 로깅처리
+        if (order.getOrderUser() != user) order.setOrderState(-1); ; // 실패시 로깅처리
 //        if ((order.getOrderPrice() - order.getUseMileage()) != data.getAmount().getTotal()) return ;
 //        user.setMileage(order.getUseMileage());
 //        userService.save(user);
